@@ -28,6 +28,17 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="form-label" for="category">Category *</label>
+                        <select name="category" id="category" class="form-control">
+                            <?php $currCat = $story['category'] ?? 'Student Journey'; ?>
+                            <option value="Student Journey" <?= $currCat === 'Student Journey' ? 'selected' : '' ?>>Student Journeys</option>
+                            <option value="Art & Craft" <?= $currCat === 'Art & Craft' ? 'selected' : '' ?>>Art &amp; Craft</option>
+                            <option value="Exhibition" <?= $currCat === 'Exhibition' ? 'selected' : '' ?>>Exhibitions</option>
+                            <option value="Workshop" <?= $currCat === 'Workshop' ? 'selected' : '' ?>>Workshops</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label" for="status">Publication Status</label>
                         <select name="status" id="status" class="form-control">
                             <option value="published" <?= $story['status'] === 'published' ? 'selected' : '' ?>>Published</option>

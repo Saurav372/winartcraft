@@ -336,7 +336,7 @@
                 </div>
                 <div class="featured-content-box">
                     <div class="featured-meta">
-                        <span class="meta-tag">Student Journey</span>
+                        <span class="meta-tag"><?= esc($featured['category'] ?? 'Student Journey') ?></span>
                         <span><?= !empty($featured['created_at']) ? date('F j, Y', strtotime($featured['created_at'])) : 'March 23, 2025' ?></span>
                         <span>&bull; 3 min read</span>
                     </div>
@@ -346,7 +346,7 @@
                         </a>
                     </h3>
                     <p class="featured-excerpt">
-                        <?= esc($featured['excerpt'] ?: strip_tags(substr($featured['content'], 0, 180)) . '...') ?>
+                        <?= esc($featured['excerpt'] ?: strip_tags(substr($featured['content'] ?? '', 0, 180)) . '...') ?>
                     </p>
                     <a href="<?= base_url('stories/' . $featured['slug']) ?>" class="btn-featured-read">
                         Read Featured Story 
@@ -355,32 +355,45 @@
                 </div>
             </div>
 
+            <?php
+                // Count stories per category
+                $catCounts = [
+                    'all' => count($stories),
+                    'student-journey' => 0,
+                    'art-and-craft' => 0,
+                    'exhibition' => 0,
+                    'workshop' => 0,
+                ];
+                foreach ($stories as $st) {
+                    $c = strtolower(str_replace([' ', '&'], ['-', 'and'], $st['category'] ?? 'student-journey'));
+                    if (isset($catCounts[$c])) {
+                        $catCounts[$c]++;
+                    } else {
+                        $catCounts[$c] = 1;
+                    }
+                }
+            ?>
+
             <!-- 2. Interactive Category Filter Pills (Canva Inspiration) -->
             <div class="showcase-filters">
-                <button type="button" class="filter-pill active" onclick="filterStories('all', this)">All Stories (<?= count($stories) ?>)</button>
-                <button type="button" class="filter-pill" onclick="filterStories('journey', this)">Student Journeys</button>
-                <button type="button" class="filter-pill" onclick="filterStories('craft', this)">Art &amp; Craft</button>
-                <button type="button" class="filter-pill" onclick="filterStories('exhibition', this)">Exhibitions</button>
+                <button type="button" class="filter-pill active" onclick="filterStories('all', this)">All Stories (<?= $catCounts['all'] ?>)</button>
+                <button type="button" class="filter-pill" onclick="filterStories('student-journey', this)">Student Journeys (<?= $catCounts['student-journey'] ?>)</button>
+                <button type="button" class="filter-pill" onclick="filterStories('art-and-craft', this)">Art &amp; Craft (<?= $catCounts['art-and-craft'] ?>)</button>
+                <button type="button" class="filter-pill" onclick="filterStories('exhibition', this)">Exhibitions (<?= $catCounts['exhibition'] ?>)</button>
+                <?php if (!empty($catCounts['workshop'])): ?>
+                    <button type="button" class="filter-pill" onclick="filterStories('workshop', this)">Workshops (<?= $catCounts['workshop'] ?>)</button>
+                <?php endif; ?>
             </div>
 
             <!-- 3. Responsive 3-Column Stories Grid (Contra Inspiration) -->
             <div class="stories-grid">
                 <?php foreach ($stories as $index => $item): 
-                    // Dynamic tag classification
-                    $tag = 'Student Journey';
-                    $filterCat = 'journey';
-                    if (stripos($item['title'], 'exhibition') !== false) {
-                        $tag = 'Exhibition';
-                        $filterCat = 'exhibition';
-                    } elseif (stripos($item['title'], 'craft') !== false || stripos($item['title'], 'workshop') !== false) {
-                        $tag = 'Art & Craft';
-                        $filterCat = 'craft';
-                    }
+                    $catSlug = strtolower(str_replace([' ', '&'], ['-', 'and'], $item['category'] ?? 'student-journey'));
                 ?>
-                    <article class="story-card" data-category="<?= $filterCat ?>">
+                    <article class="story-card" data-category="<?= esc($catSlug) ?>">
                         <div class="story-card-thumb-wrap">
                             <img src="<?= base_url($item['featured_image'] ?: 'assets/uploads/2025/03/window.jpg') ?>" alt="<?= esc($item['title']) ?>" loading="lazy">
-                            <div class="story-card-badge"><?= $tag ?></div>
+                            <div class="story-card-badge"><?= esc($item['category'] ?? 'Student Journey') ?></div>
                         </div>
                         <div class="story-card-body">
                             <div class="story-card-meta">

@@ -22,8 +22,18 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label" for="slug">URL Slug (leave empty to generate automatically)</label>
+                        <label class="form-label" for="slug">URL Slug (leave empty to generate)</label>
                         <input type="text" name="slug" id="slug" class="form-control" placeholder="e.g. suhanis-artistic-journey" value="<?= old('slug') ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="category">Category *</label>
+                        <select name="category" id="category" class="form-control">
+                            <option value="Student Journey" selected>Student Journeys</option>
+                            <option value="Art & Craft">Art &amp; Craft</option>
+                            <option value="Exhibition">Exhibitions</option>
+                            <option value="Workshop">Workshops</option>
+                        </select>
                     </div>
 
                     <div class="form-group">

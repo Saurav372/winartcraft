@@ -12,7 +12,7 @@ class StoryModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['title', 'slug', 'excerpt', 'content', 'featured_image', 'status', 'views'];
+    protected $allowedFields    = ['title', 'slug', 'category', 'excerpt', 'content', 'featured_image', 'status', 'views'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';

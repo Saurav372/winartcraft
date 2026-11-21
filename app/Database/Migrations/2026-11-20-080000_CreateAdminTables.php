@@ -112,6 +112,11 @@ class CreateAdminTables extends Migration
                 'constraint' => '255',
                 'null'       => true,
             ],
+            'category' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+                'default'    => 'Student Journey',
+            ],
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '20',

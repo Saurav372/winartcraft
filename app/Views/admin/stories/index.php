@@ -13,6 +13,7 @@
                 <tr>
                     <th style="width: 70px;">Image</th>
                     <th>Title & URL</th>
+                    <th>Category</th>
                     <th>Status</th>
                     <th>Views</th>
                     <th>Created At</th>
@@ -22,7 +23,7 @@
             <tbody>
                 <?php if (empty($stories)): ?>
                     <tr>
-                        <td colspan="6" style="text-align: center; color: #94a3b8; padding: 32px;">No stories found. Click "+ Add New Story" to create one.</td>
+                        <td colspan="7" style="text-align: center; color: #94a3b8; padding: 32px;">No stories found. Click "+ Add New Story" to create one.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($stories as $story): ?>
@@ -39,6 +40,11 @@
                                 <a href="<?= base_url('stories/' . $story['slug']) ?>" target="_blank" style="font-size: 12px; color: #2563eb; text-decoration: none;">
                                     /stories/<?= esc($story['slug']) ?> ↗
                                 </a>
+                            </td>
+                            <td>
+                                <span class="badge" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe;">
+                                    <?= esc($story['category'] ?? 'Student Journey') ?>
+                                </span>
                             </td>
                             <td>
                                 <?php if ($story['status'] === 'published'): ?>

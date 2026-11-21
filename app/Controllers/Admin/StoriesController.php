@@ -40,6 +40,7 @@ class StoriesController extends BaseController
         $excerpt = trim($this->request->getPost('excerpt') ?? '');
         $content = $this->request->getPost('content') ?? '';
         $featured_image = trim($this->request->getPost('featured_image') ?? '');
+        $category = trim($this->request->getPost('category') ?? 'Student Journey');
         $status = $this->request->getPost('status') ?? 'published';
 
         if (empty($title)) {
@@ -70,6 +71,7 @@ class StoriesController extends BaseController
         $this->storyModel->insert([
             'title'          => $title,
             'slug'           => $slug,
+            'category'       => $category,
             'excerpt'        => $excerpt,
             'content'        => $content,
             'featured_image' => $featured_image ?: 'assets/uploads/2025/03/window.jpg',
@@ -106,6 +108,7 @@ class StoriesController extends BaseController
         $excerpt = trim($this->request->getPost('excerpt') ?? '');
         $content = $this->request->getPost('content') ?? '';
         $featured_image = trim($this->request->getPost('featured_image') ?? '');
+        $category = trim($this->request->getPost('category') ?? 'Student Journey');
         $status = $this->request->getPost('status') ?? 'published';
 
         if (empty($title)) {
@@ -131,6 +134,7 @@ class StoriesController extends BaseController
         $this->storyModel->update($id, [
             'title'          => $title,
             'slug'           => $slug,
+            'category'       => $category,
             'excerpt'        => $excerpt,
             'content'        => $content,
             'featured_image' => $featured_image ?: $story['featured_image'],
