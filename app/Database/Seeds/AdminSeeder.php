@@ -23,6 +23,18 @@ class AdminSeeder extends Seeder
         // 2. Initial Stories
         $this->db->table('stories')->insertBatch([
             [
+                'title'          => 'From Early Foundations to IB Art Excellence: Riya’s Story at Windows',
+                'slug'           => 'riyas-artistic-journey-at-windows',
+                'category'       => 'Student Journey',
+                'excerpt'        => 'Today, Riya is 17 and excelling in IB Higher Level Art with a perfect 7/7 predicted score. Her mother shares how growing up at Windows gave both sisters their foundational love for art.',
+                'content'        => '<p class="story-lead">When a child discovers art in an environment of freedom, kindness, and exploration, that creative confidence stays with them for a lifetime. Riya and her sister grew up at Windows, building their very first creative foundations in our studio.</p><blockquote style="background: #f8fafc; border-left: 4px solid #2563eb; padding: 18px 22px; margin: 25px 0; font-style: italic; color: #1e293b; border-radius: 0 10px 10px 0;">“They had a great intro to art with you… Riya has carried on into IB High level art and has achieved a 7 out of 7 predicted score.”<div style="margin-top: 10px; font-weight: 600; font-style: normal; color: #475569;">— Feedback from Riya’s Mother</div></blockquote><p>Today, Riya is 17 years old and deeply passionate about the arts. Achieving a predicted 7 out of 7 in the rigorous International Baccalaureate (IB) Higher Level Visual Arts curriculum is an extraordinary accomplishment that reflects her dedication, technical mastery, and creative vision.</p><p>Receiving this wonderful feedback from her mother, along with memories and photographs of the sisters growing up together at Windows, fills our hearts with immense pride. Watching our students carry the joy of self-expression from childhood into advanced academic excellence is the greatest reward of what we do every day at Windows The Art and Craft Corner.</p>',
+                'featured_image' => 'assets/uploads/2025/03/window.jpg',
+                'status'         => 'published',
+                'views'          => 32,
+                'created_at'     => $now,
+                'updated_at'     => $now,
+            ],
+            [
                 'title'          => 'Five Years of Creativity: Divita’s Story at Windows',
                 'slug'           => 'divitas-artistic-journey-at-windows',
                 'category'       => 'Student Journey',
@@ -106,6 +118,15 @@ class AdminSeeder extends Seeder
 
         // 4. Initial Testimonials
         $this->db->table('testimonials')->insertBatch([
+            [
+                'parent_name' => "Riya's Mother",
+                'child_info'  => 'Mother of Riya (17 yrs, IB High Level Art - Predicted 7/7)',
+                'review'      => 'They had a great intro to art with you… Riya has carried on into IB High level art and has achieved a 7 out of 7 predicted score. A wonderful feedback and memory of many years ago when both the sisters grew up at Windows.',
+                'rating'      => 5,
+                'status'      => 'active',
+                'created_at'  => $now,
+                'updated_at'  => $now,
+            ],
             [
                 'parent_name' => "Divita's Mother",
                 'child_info'  => 'Mother of Divita (Student for 5 years)',
