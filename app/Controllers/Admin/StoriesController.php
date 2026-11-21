@@ -59,7 +59,11 @@ class StoriesController extends BaseController
         $file = $this->request->getFile('image_file');
         if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
-            $file->move(FCPATH . 'assets/uploads/2026/stories/', $newName);
+            $targetDir = FCPATH . 'assets/uploads/2026/stories/';
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0775, true);
+            }
+            $file->move($targetDir, $newName);
             $featured_image = 'assets/uploads/2026/stories/' . $newName;
         }
 
@@ -116,7 +120,11 @@ class StoriesController extends BaseController
         $file = $this->request->getFile('image_file');
         if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
-            $file->move(FCPATH . 'assets/uploads/2026/stories/', $newName);
+            $targetDir = FCPATH . 'assets/uploads/2026/stories/';
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0775, true);
+            }
+            $file->move($targetDir, $newName);
             $featured_image = 'assets/uploads/2026/stories/' . $newName;
         }
 

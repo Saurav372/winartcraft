@@ -45,12 +45,25 @@ class TestimonialsController extends BaseController
             return redirect()->back()->withInput()->with('error', 'Parent name and review text are required.');
         }
 
+        $avatar = trim($this->request->getPost('avatar') ?? '');
+        $file = $this->request->getFile('avatar_file');
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $targetDir = FCPATH . 'assets/uploads/2026/testimonials/';
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0775, true);
+            }
+            $file->move($targetDir, $newName);
+            $avatar = 'assets/uploads/2026/testimonials/' . $newName;
+        }
+
         $this->testimonialModel->insert([
             'parent_name' => $parent_name,
             'child_info'  => $child_info,
             'review'      => $review,
             'rating'      => $rating,
             'status'      => $status,
+            'avatar'      => $avatar,
         ]);
 
         return redirect()->to(base_url('admin/testimonials'))->with('success', 'Testimonial added successfully!');
@@ -87,12 +100,25 @@ class TestimonialsController extends BaseController
             return redirect()->back()->withInput()->with('error', 'Parent name and review text are required.');
         }
 
+        $avatar = trim($this->request->getPost('avatar') ?? '');
+        $file = $this->request->getFile('avatar_file');
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $targetDir = FCPATH . 'assets/uploads/2026/testimonials/';
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0775, true);
+            }
+            $file->move($targetDir, $newName);
+            $avatar = 'assets/uploads/2026/testimonials/' . $newName;
+        }
+
         $this->testimonialModel->update($id, [
             'parent_name' => $parent_name,
             'child_info'  => $child_info,
             'review'      => $review,
             'rating'      => $rating,
             'status'      => $status,
+            'avatar'      => $avatar ?: $testimonial['avatar'],
         ]);
 
         return redirect()->to(base_url('admin/testimonials'))->with('success', 'Testimonial updated successfully!');

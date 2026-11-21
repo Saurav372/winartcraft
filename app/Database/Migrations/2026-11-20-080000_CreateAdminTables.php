@@ -212,6 +212,11 @@ class CreateAdminTables extends Migration
                 'constraint' => '20',
                 'default'    => 'active',
             ],
+            'avatar' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => true,
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

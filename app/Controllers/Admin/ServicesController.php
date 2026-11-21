@@ -50,7 +50,11 @@ class ServicesController extends BaseController
         $file = $this->request->getFile('image_file');
         if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
-            $file->move(FCPATH . 'assets/uploads/2026/services/', $newName);
+            $targetDir = FCPATH . 'assets/uploads/2026/services/';
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0775, true);
+            }
+            $file->move($targetDir, $newName);
             $image = 'assets/uploads/2026/services/' . $newName;
         }
 
@@ -101,7 +105,11 @@ class ServicesController extends BaseController
         $file = $this->request->getFile('image_file');
         if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
-            $file->move(FCPATH . 'assets/uploads/2026/services/', $newName);
+            $targetDir = FCPATH . 'assets/uploads/2026/services/';
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0775, true);
+            }
+            $file->move($targetDir, $newName);
             $image = 'assets/uploads/2026/services/' . $newName;
         }
 
