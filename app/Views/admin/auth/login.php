@@ -118,19 +118,6 @@
             color: #2563eb;
             text-decoration: none;
         }
-        .demo-credentials {
-            margin-top: 18px;
-            padding: 12px;
-            background: #f8fafc;
-            border: 1px dashed #cbd5e1;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #475569;
-            text-align: left;
-        }
-        .demo-credentials strong {
-            color: #0f172a;
-        }
     </style>
 </head>
 <body>
@@ -162,22 +149,16 @@
 
             <div class="form-group">
                 <label class="form-label" for="email">Admin Email</label>
-                <input type="email" name="email" id="email" class="form-control" value="<?= old('email', 'admin@winartcraft.com') ?>" required autofocus>
+                <input type="email" name="email" id="email" class="form-control" placeholder="name@domain.com" value="<?= old('email') ?>" required autofocus>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="••••••••" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
             </div>
 
             <button type="submit" class="btn-submit">Sign In to Dashboard</button>
         </form>
-
-        <div class="demo-credentials">
-            <strong>Default Credentials:</strong><br>
-            Email: <code>admin@winartcraft.com</code><br>
-            Password: <code>admin123</code>
-        </div>
 
         <div class="login-footer">
             <a href="<?= base_url('/') ?>">← Return to Live Website</a>
