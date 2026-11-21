@@ -23,8 +23,21 @@ class AdminSeeder extends Seeder
         // 2. Initial Stories
         $this->db->table('stories')->insertBatch([
             [
+                'title'          => 'Five Years of Creativity: Divita’s Story at Windows',
+                'slug'           => 'divitas-artistic-journey-at-windows',
+                'category'       => 'Student Journey',
+                'excerpt'        => 'Divita has been learning and flourishing at Windows for the last five years. Her mother shares how this nurturing space and variety of art forms have inspired her creative growth.',
+                'content'        => '<p class="story-lead">Divita has been part of the Windows Art and Craft family for the last five years, filling our studio with dedication, curiosity, and artistic wonder.</p><blockquote style="background: #f8fafc; border-left: 4px solid #2563eb; padding: 18px 22px; margin: 25px 0; font-style: italic; color: #1e293b; border-radius: 0 10px 10px 0;">“A wonderful art class with such a lovely variety of art forms! My daughter absolutely loves her sessions and never wants to miss a class. It’s beautiful to see her exploring different art forms, discovering her artistic side, and growing creatively with every session. A truly nurturing space that encourages children to express themselves and enjoy the joy of creating. Highly recommended!”<div style="margin-top: 10px; font-weight: 600; font-style: normal; color: #475569;">— Shared by Divita’s Mother</div></blockquote><p>Over the past five years, watching Divita grow from exploring her first brushstrokes to embracing a wide variety of mixed media techniques has been an absolute delight. At Windows, we believe that art is a journey of self-discovery where curiosity is celebrated and every canvas is an invitation to express your authentic self.</p><p>Divita’s genuine love for art and her excitement to never miss a class embody the heart and soul of Windows—where children find not just an art class, but a warm, encouraging sanctuary to blossom creatively.</p>',
+                'featured_image' => 'assets/uploads/2025/03/window.jpg',
+                'status'         => 'published',
+                'views'          => 25,
+                'created_at'     => $now,
+                'updated_at'     => $now,
+            ],
+            [
                 'title'          => 'Suhani’s Artistic Journey at Windows',
                 'slug'           => 'suhanis-artistic-journey-at-windows',
+                'category'       => 'Student Journey',
                 'excerpt'        => 'Explore how Suhani discovered her unique visual voice and confidence through exploratory art mentoring at Windows.',
                 'content'        => '<p>Suhani’s Artistic Journey at Windows has been a transformative experience marked by creativity, personal growth, and self-expression. Starting with basic sketching and color theory, she quickly expanded into mixed media, canvas painting, and abstract forms.</p><p>Through our personalized mentoring program, she learned to trust her intuition and take creative risks, resulting in stunning artworks showcased at our annual gallery exhibition.</p>',
                 'featured_image' => 'assets/uploads/2025/03/Creative-art-4-298x300.jpg',
@@ -36,6 +49,7 @@ class AdminSeeder extends Seeder
             [
                 'title'          => 'A Journey of Creativity: Amara’s Story at Windows',
                 'slug'           => 'amaras-creative-journey',
+                'category'       => 'Student Journey',
                 'excerpt'        => 'From hesitant sketches to vibrant gallery paintings — follow Amara’s artistic journey at Windows The Art and Craft Corner.',
                 'content'        => '<p>At Windows, we believe every child possesses an innate creative spark. Amara joined our weekend workshops with curiosity and a passion for colors. Over the months, our mentors nurtured her talents across pottery, water coloring, and craft sculpture.</p><p>Today, Amara is not only confident in her artistic skills but has inspired her peers to explore creative thinking without boundaries.</p>',
                 'featured_image' => 'assets/uploads/2025/03/DSC1354-300x199.jpg',
@@ -92,6 +106,15 @@ class AdminSeeder extends Seeder
 
         // 4. Initial Testimonials
         $this->db->table('testimonials')->insertBatch([
+            [
+                'parent_name' => "Divita's Mother",
+                'child_info'  => 'Mother of Divita (Student for 5 years)',
+                'review'      => 'A wonderful art class with such a lovely variety of art forms! My daughter absolutely loves her sessions and never wants to miss a class. It’s beautiful to see her exploring different art forms, discovering her artistic side, and growing creatively with every session. A truly nurturing space that encourages children to express themselves and enjoy the joy of creating. Highly recommended!',
+                'rating'      => 5,
+                'status'      => 'active',
+                'created_at'  => $now,
+                'updated_at'  => $now,
+            ],
             [
                 'parent_name' => 'Priya Sharma',
                 'child_info'  => 'Mother of Aarav (Age 8)',
