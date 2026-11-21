@@ -1,0 +1,24 @@
+# WinArtCraft - Root .htaccess for Shared Hosting / cPanel
+Options -Indexes
+
+# Protect sensitive and hidden files
+<FilesMatch "^\.">
+    <IfModule authz_core_module>
+        Require all denied
+    </IfModule>
+    <IfModule !authz_core_module>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Protect internal application directories
+    RewriteRule ^(app|writable|vendor|tests) - [F,L]
+
+    # Forward all traffic to the public directory
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
